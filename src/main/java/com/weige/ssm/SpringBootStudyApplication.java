@@ -22,9 +22,9 @@ import tk.mybatis.spring.annotation.MapperScan;
 //@EnableEurekaClient//服务注册
 @EnableJms // 开启JMS消息服务
 @ServletComponentScan //开启servlet组件扫描 
-public class SpringBootStudyApplication3 {
+public class SpringBootStudyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootStudyApplication3.class, args);
+		SpringApplication.run(SpringBootStudyApplication.class, args);
 	}
 }
