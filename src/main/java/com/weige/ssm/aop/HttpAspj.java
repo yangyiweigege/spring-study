@@ -12,13 +12,10 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
- * <pre>
- * 功       能: 面向aop切面编程 基于动态代理实现
- * 涉及版本: V3.0.0 
- * 创  建  者: yangyiwei
- * 日       期: 2018年3月9日 上午11:28:49
- * Q    Q: 2873824885
- * </pre>
+ * 拦截http请求
+ * @author yangyiwei
+ * @date 2018年6月11日
+ * @time 下午5:20:52
  */
 @Aspect
 @Component
