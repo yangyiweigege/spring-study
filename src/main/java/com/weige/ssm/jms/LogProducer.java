@@ -7,7 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.stereotype.Component;
-
+/**
+ * 日志生产
+ * @author yangyiwei
+ * @date 2018年6月12日
+ * @time 上午10:08:08
+ */
 @Component
 public class LogProducer/* implements CommandLineRunner */{
 
@@ -20,7 +25,7 @@ public class LogProducer/* implements CommandLineRunner */{
 	private Queue logQueue;
 	
 
-	//@Override
+	//@Override 
 	public void run(String... strings) throws Exception {
 		StringBuffer content = new StringBuffer();
 		content.append("This is a log message  :  ");

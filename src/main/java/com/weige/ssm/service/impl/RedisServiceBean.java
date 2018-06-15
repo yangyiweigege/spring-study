@@ -33,7 +33,7 @@ public class RedisServiceBean implements RedisService {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("name", "yangyiwei");
 		map.put("age", "20");
-		map.put("address", "杭州盈网科技");
+		map.put("address", "杭州力太科技");
 		transaction.hmset("exit-employee", map);
 		transaction.hmget("exit-employee", "name", "age");
 		transaction.brpop(10, "transaction-line");
@@ -123,13 +123,14 @@ public class RedisServiceBean implements RedisService {
 	@Override
 	public Result<Object> listOperate(JSONArray jsonArray) {
 		Result<Object> result = new Result<Object>();
-		Jedis jedis = jedisPool.getResource(); 
+		Jedis jedis = jedisPool.getResource();
 		String[] strings = new String[10];
 		for (int i = 0; i < jsonArray.size(); i++) {
 			strings[i] = jsonArray.getString(i);
 		}
 		jedis.lpush("data-queen", strings);
 		List<String> list = jedis.brpop(10, "data-queen", "spring-log");
+		System.out.println(list.toString());
 		return result;
 	}
 

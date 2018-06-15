@@ -4,14 +4,14 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.weige.ssm.dao.PersonDao;
 import com.weige.ssm.domain.Person;
 import com.weige.ssm.domain.Result;
@@ -45,18 +45,7 @@ public class PersonServiceBean implements PersonService {
 	@Override
 	public Result<Object> update(Person person) {
 		Result<Object> result = new Result<Object>();
-		Query query = new Query();
-		Criteria criteria = new Criteria();
-		criteria.and("_id").is(person.getId());
-		query.addCriteria(criteria);
-		Update update = new Update();
-		if (person.getName() != null) {
-			update.set("name", person.getName());
-		}
-		if (person.getAge() != null) {
-			update.set("age", person.getAge());
-		}
-		mongoTemplate.updateFirst(query, update, Person.class);
+		personDao.updateExistDataById(person);
 		return result.setCode(ResultStatus.SUCCESS);
 	}
 
@@ -81,6 +70,21 @@ public class PersonServiceBean implements PersonService {
 		query.skip((pageNo - 1) * pageSize).limit(pageSize);
 		List<Person> list = mongoTemplate.find(query, Person.class);
 		return result.setCode(ResultStatus.SUCCESS).setData(list);
+	}
+
+	@Override
+	public Result<Object> pushArray(String jsonArray, String id) {
+		Result<Object> result = new Result<Object>();
+		JSONArray list = JSONObject.parseArray(jsonArray);
+		Query query = new Query();
+		query.addCriteria(new Criteria().and("_id").is(Integer.parseInt(id)));
+		Update update = new Update();
+		update.pushAll("school", list.toArray());
+		int count = mongoTemplate.updateFirst(query, update, "person").getN();
+		if (count > 0) {
+			return result.setCode(ResultStatus.SUCCESS).setData(list);
+		} 
+		return result.setCode(ResultStatus.UPDATE_FAIL).setData(list);
 	}
 
 }

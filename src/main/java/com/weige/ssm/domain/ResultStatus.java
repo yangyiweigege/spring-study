@@ -20,7 +20,8 @@ public enum ResultStatus{
 	ONLY_SMALL("你可能还在上小学", 100),
 	ONLY_MIDDLE("你可能还在上中学", 101),
 	ONLY_BIG("你可能还在上大学", 102),
-	ILLEGAL_PARAM("参数不合法", 10)
+	ILLEGAL_PARAM("参数不合法", 10),
+	UPDATE_FAIL("更新失败", 70)
 	;
 
 	/**

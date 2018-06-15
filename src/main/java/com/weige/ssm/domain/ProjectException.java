@@ -11,34 +11,30 @@ import com.weige.ssm.domain.ResultStatus;
  * Q    Q: 2873824885
  * </pre>
  */
-public class ProjectException extends RuntimeException{
-	
+public class ProjectException extends RuntimeException {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer code;
-	
-	
+
 	public ProjectException(String message, Integer code) {
 		super(message);
 		this.code = code;
 	}
-	
+
 	public ProjectException(ResultStatus resultStatus) {
 		super(resultStatus.getMessage());
 		this.code = resultStatus.getCode();
 	}
 
-
 	public Integer getCode() {
 		return code;
 	}
-
 
 	public void setCode(Integer code) {
 		this.code = code;
 	}
 
-	
 }

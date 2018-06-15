@@ -3,7 +3,6 @@ package com.weige.ssm.dao;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.weige.ssm.domain.Person;
@@ -25,4 +24,10 @@ public interface PersonDao extends  MongoRepository<Person, Integer>{
      */
     @CacheEvict(value="user", key="'users_'+#p0") 
     public void delete(Integer id);
+    
+    /**
+     * 更新属性字段不为空的内容
+     * @param person
+     */
+    public void updateExistDataById(Person person);
 }

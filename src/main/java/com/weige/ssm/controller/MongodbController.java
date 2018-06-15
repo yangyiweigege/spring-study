@@ -1,5 +1,6 @@
 package com.weige.ssm.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -98,8 +99,13 @@ public class MongodbController {
 	 */
 	@RequestMapping(value = "/find/page", method = { RequestMethod.GET, RequestMethod.POST })
 	@ValidatePage
-	public Result<Object> findByPage(Integer pageSize, Integer pageNo) {
+	public Result<Object> findByPage(Integer pageSize, Integer pageNo, HttpServletRequest request) {
 		Result<Object> result = personService.findByPage(pageSize, pageNo);
 		return result;
+	}
+	
+	@RequestMapping(value = "/push", method = {RequestMethod.POST, RequestMethod.GET})
+	public Result<Object> pushArray(String jsonArray, String id) {
+		return personService.pushArray(jsonArray, id);
 	}
 }

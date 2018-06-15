@@ -47,4 +47,11 @@ public interface PersonService {
 	 */
 	public Result<Object> findByPage(Integer pageSize, Integer pageNo);
 
+	/**
+	 * mongodb数组操作
+	 * @param jsonArray
+	 * @return
+	 */
+	public Result<Object> pushArray(String jsonArray, String id);
+
 }

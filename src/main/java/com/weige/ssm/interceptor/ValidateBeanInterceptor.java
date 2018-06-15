@@ -32,7 +32,7 @@ public class ValidateBeanInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("执行validateBean拦截器!");
+		System.out.println("执行validateBean拦截器!" + request.getClass().getName());
 		if (handler instanceof HandlerMethod) {
 			HandlerMethod handlerMethod = (HandlerMethod) handler;
 			Method method = handlerMethod.getMethod();
