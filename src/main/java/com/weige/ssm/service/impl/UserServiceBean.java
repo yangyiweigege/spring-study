@@ -40,7 +40,7 @@ public class UserServiceBean implements UserService{
 		return result;
 	}
 
-	@Override
+/*	@Override
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true, isolation = Isolation.DEFAULT)
 	public Result<Object> findList(User user, Integer currentPage) {
 		Result<Object> result = new Result<Object>();
@@ -68,13 +68,31 @@ public class UserServiceBean implements UserService{
 	@Cacheable(value = "user")
 	public User findById(String id) {
 		return userMapper.selectByPrimaryKey(Integer.parseInt(id));
-	}
+	}*/
 
 	@Override
 	public Result<Object> findByName(String name) {
 		Result<Object> result = new Result<Object>();
 		User user = userMapper.findByName(name);
 		return result.setCode(ResultStatus.SUCCESS).setData(user);
+	}
+
+	@Override
+	public Result<Object> findList(User user, Integer currentPage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Result<List<User>> findByAttribute(String attribute) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User findById(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

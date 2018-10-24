@@ -17,8 +17,8 @@ import com.weige.ssm.plungin.ValidatePage;
  * @date 2018年6月15日
  * @time 上午9:06:31
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class PageBeanAop {
 
 	/**
