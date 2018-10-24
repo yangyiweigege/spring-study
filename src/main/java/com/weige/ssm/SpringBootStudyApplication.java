@@ -21,7 +21,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableAsync // 开启异步任务
 //@EnableEurekaClient//服务注册
 @EnableJms // 开启JMS消息服务
-@ServletComponentScan //开启servlet组件扫描
+@ServletComponentScan //开启servlet组件扫描 我是idea我也要冲突
 public class SpringBootStudyApplication {
 
 	public static void main(String[] args) {
