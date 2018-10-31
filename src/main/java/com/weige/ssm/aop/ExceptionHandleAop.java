@@ -13,7 +13,7 @@ import com.weige.ssm.domain.ResultStatus;
  * 涉及版本: V3.0.0 
  * 创  建  者: yangyiwei
  * 日       期: 2018年3月9日 下午1:45:31
- * Q    Q: 2873824885 这个可以了把
+ * Q    Q: 2873824885 
  * </pre>
  */
 @ControllerAdvice
